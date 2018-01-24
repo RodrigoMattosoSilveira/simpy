@@ -70,10 +70,17 @@ def customer(env, name, counter, time_in_bank):
             # We reneged
             print('%7.4f %s: RENEGED after %6.3f' % (env.now, name, wait))
 
+def getRandomSeed():
+    current_milli_time = round(time.time() * 1000)
+    random_seed = current_milli_time%100
+    print ('Cuurent time in mils: %s' % (current_milli_time))
+    print ('RANDOM_SEED: %s' % (random_seed))
+    return random_seed
+
 
 # Setup and start the simulation
 print('Bank renege')
-random.seed(RANDOM_SEED)
+random.seed(getRandomSeed)
 
 # Set up the simpy environment
 env = simpy.Environment()
